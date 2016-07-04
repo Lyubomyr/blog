@@ -20,6 +20,8 @@ development:
 #   <<: *default
 #   database: db/test.sqlite3
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
+production:
+  adapter: postgresql
+  database: blog_prod
+  encoding: utf8
+  reconnect: true
