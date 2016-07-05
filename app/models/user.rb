@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :subscriptions
   has_many :posts, through: :subscriptions
 
-  validates :email, :first_name, presence: { message: "%{value} is not a valid value" }
+  validates :email, presence: { message: "%{value} is not a valid value" }
   validates :email, uniqueness: true
 
-  before_save :uppercase_name
+  # before_save :uppercase_name
 
   scope :has_email, -> { where.not(email: nil) }
 

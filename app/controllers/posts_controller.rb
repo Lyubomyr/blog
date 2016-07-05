@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
     def check_params
       puts "===================================="
-      puts params
+      puts session.inspect
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
